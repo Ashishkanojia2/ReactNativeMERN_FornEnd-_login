@@ -1,5 +1,6 @@
 import {
   Dimensions,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -47,7 +48,7 @@ const SignUp = ({navigation}) => {
             if(data.error){
                 setErrMsg(data.error)
             }else{
-                Alert('Acount Create Successfully')
+                Alert('Account Create Successfully')
             }
             
           });
@@ -56,7 +57,7 @@ const SignUp = ({navigation}) => {
   };
 
   return (
-    <View style={styles.main}>
+    <ScrollView  contentContainerStyle={styles.main}>
       <View style={styles.mainChild}>
         <Text style={styles.mainTxt}>SignUp</Text>
         <View style={[styles.mainGrandChild, {marginTop: 20}]}>
@@ -64,6 +65,7 @@ const SignUp = ({navigation}) => {
             style={styles.logTxt}
             placeholder="Name"
             placeholderTextColor={'#fff'}
+            onPressIn={()=> setErrMsg(null)}
             onChangeText={text => {
               setFdata({...fdata, name: text});
             }}></TextInput>
@@ -73,6 +75,7 @@ const SignUp = ({navigation}) => {
             style={styles.logTxt}
             placeholder="UserName/Email"
             placeholderTextColor={'#fff'}
+            onPressIn={()=> setErrMsg(null)}
             onChangeText={text => {
               setFdata({...fdata, email: text});
             }}></TextInput>
@@ -83,6 +86,7 @@ const SignUp = ({navigation}) => {
             style={styles.logTxt}
             placeholder="Password"
             placeholderTextColor={'#fff'}
+            onPressIn={()=> setErrMsg(null)}
             onChangeText={text => {
               setFdata({...fdata, password: text});
             }}></TextInput>
@@ -92,6 +96,7 @@ const SignUp = ({navigation}) => {
             style={styles.logTxt}
             placeholder="Confirm Password"
             placeholderTextColor={'#fff'}
+            onPressIn={()=> setErrMsg(null)}
             onChangeText={text => {
               setFdata({...fdata, cpassword: text});
             }}></TextInput>
@@ -105,7 +110,7 @@ const SignUp = ({navigation}) => {
           <Text style={styles.logbtnTxt}>SignUp</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

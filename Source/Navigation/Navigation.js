@@ -6,6 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Splash from '../Screen/Splash';
 import Login from '../Screen/Login';
 import SignUp from '../Screen/SignUp';
+import Home from '../Screen/Home';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,11 @@ const Navigation = () => {
         <Stack.Screen
           name="Signup"
           component={SignUp}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

@@ -7,6 +7,7 @@ import Splash from '../Screen/Splash';
 import Login from '../Screen/Login';
 import SignUp from '../Screen/SignUp';
 import Home from '../Screen/Home';
+import Verification from '../Screen/Verification';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,11 @@ const Navigation = () => {
         <Stack.Screen
           name="Home"
           component={Home}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Verification"
+          component={Verification}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

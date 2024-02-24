@@ -33,6 +33,7 @@ const Login = ({navigation}) => {
           console.log('================7====================');
           console.log(data);
           console.log('====================================');
+          
           if (data.error) {
             setErrMsg(data.error);
           } else {
@@ -46,11 +47,6 @@ const Login = ({navigation}) => {
     <View style={styles.main}>
       <View style={styles.mainChild}>
         <Text style={styles.mainTxt}>LogIn</Text>
-        {/* {errMsg ? 
-        <Text style={{color: '#fff', fontSize: 17, marginTop: 15}}>
-          {errMsg} : null
-        </Text>
-        } */}
         {errMsg ? (
           <Text style={{color: '#fff', fontSize: 17, marginTop: 15}}>
             {errMsg}

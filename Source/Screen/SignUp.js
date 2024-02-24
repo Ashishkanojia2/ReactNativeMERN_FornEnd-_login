@@ -1,4 +1,5 @@
 import {
+  Alert,
   Dimensions,
   ScrollView,
   StyleSheet,
@@ -12,7 +13,7 @@ import React, {useState} from 'react';
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-const SignUp = ({navigation}) => {
+const SignUp = ({navigation},) => {
   const [errMsg, setErrMsg] = useState();
   const [fdata, setFdata] = useState({
     name: '',
@@ -35,7 +36,7 @@ const SignUp = ({navigation}) => {
         console.log(setErrMsg('Password and Confirm Password id not same'));
         return;
       } else {
-        fetch('http://10.0.2.2:3000/signup', {
+        fetch('http://10.0.2.2:3000/verify', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'}, // 'application/json' instead of 'application.json'
           body: JSON.stringify(fdata),
@@ -45,10 +46,13 @@ const SignUp = ({navigation}) => {
             console.log('================7====================');
             console.log(data);
             console.log('====================================');
-            if(data.error){
-                setErrMsg(data.error)
-            }else{
-                Alert('Account Create Successfully')
+            if(data.error == "invalid Credentials"){
+                setErrMsg("invalid Credentials")
+            }else if (data.message === "Verification Code Sent"){
+                Alert.alert(data.message)
+                // navigation.navigate('Home')
+                navigation.navigate('Verification',{userdata:data.udata})
+              
             }
             
           });
